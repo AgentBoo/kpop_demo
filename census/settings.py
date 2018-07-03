@@ -48,7 +48,7 @@ else:
     
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
    
-    ALLOWED_HOSTS = [ * ]
+    ALLOWED_HOSTS = ['*']
 
     CORS_ORIGIN_WHITELIST = [ os.getenv('APP_ROOT') ] 
 
