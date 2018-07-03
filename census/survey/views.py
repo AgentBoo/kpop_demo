@@ -13,9 +13,9 @@ from .forms import SurveyForm
 
 import os
 import praw
-from dotenv import load_dotenv, find_dotenv
+#from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
+#load_dotenv(find_dotenv())
 
 def get_reddit_instance():
 	return praw.Reddit(client_id=os.getenv('PRAW_CLIENT'), 

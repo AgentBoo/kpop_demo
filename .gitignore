@@ -16,7 +16,6 @@ README.md
 *.scss
 
 # dev 
-# .env
 
 # sqlite 
 *.sqlite3
@@ -25,6 +24,7 @@ README.md
 __pycache__
 
 .DS_Store
+.env
 .env.local
 .env.development.local
 .env.test.local

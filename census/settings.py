@@ -43,8 +43,6 @@ if DEBUG:
 
 else:
     import dj_database_url
-    from dotenv import load_dotenv, find_dotenv
-    load_dotenv(find_dotenv())
 
     # SECURITY WARNING: keep the secret key used in production secret!
     
