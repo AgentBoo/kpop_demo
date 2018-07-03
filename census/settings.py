@@ -26,7 +26,7 @@ Import local settings from local_settings (local_settings is never committed to 
 A specific local_settings is created for each dev and production environments.
 '''
 
-DEBUG = bool(os.getenv('DJANGO_DEBUG', True))
+DEBUG = bool(os.getenv('DJANGO_DEBUG', False))
 
 if DEBUG:
     try:
