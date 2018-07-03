@@ -54,17 +54,6 @@ else:
         'default': dj_database_url.config(conn_max_age=600)  
     }
 
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-
-    SECURE_BROWSER_XSS_FILTER = False 
-
-    SECURE_SSL_REDIRECT = False
-
-    SESSION_COOKIE_SECURE = True 
-
-    CSRF_COOKIE_SECURE = True 
-
-    X_FRAME_OPTIONS='DENY' 
 
     DEBUG_PROPAGATE_EXCEPTIONS = True
 
