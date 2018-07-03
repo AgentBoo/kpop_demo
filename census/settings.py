@@ -62,7 +62,7 @@ else:
 
     SECURE_BROWSER_XSS_FILTER = True 
 
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
 
     SESSION_COOKIE_SECURE = True 
 
