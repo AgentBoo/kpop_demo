@@ -10,13 +10,13 @@
 # production 
 /build
 /public
-# /housekeeping
+/housekeeping
 /scraper 
 README.md 
 *.scss
 
 # dev 
-.env
+# .env
 
 # sqlite 
 *.sqlite3
