@@ -48,11 +48,7 @@ else:
     
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
    
-    ALLOWED_HOSTS = ['*']
-
-    CORS_ORIGIN_WHITELIST = [ os.getenv('APP_ROOT') ] 
-
-    CSRF_TRUSTED_ORIGINS = [ os.getenv('APP_ROOT') ]
+    ALLOWED_HOSTS = ['*','https://kpopdemo.herokuapp.com']
 
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)  
