@@ -1,0 +1,149 @@
+.body-custom{
+	background: #f2efea;
+}
+
+
+/*** MISC  ***/
+.border{
+  border: solid 1px red;
+}
+.row-custom-focal{
+  display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.row-custom-focal > *{
+  flex: 1;
+  margin: 0.7em;
+}
+
+@media (min-width: @screen-sm-min) { 
+  .row-custom-focal > *{
+    width: 100vw;
+  }
+}
+
+.survey-info-custom{
+  line-height: 4.158;
+  margin-top: 1.428em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*** NAVBAR ***/
+.navbar.navbar-default .navbar-brand-custom{
+  padding-right: 1.428vw;
+}
+
+
+/*** BUTTONS ***/
+/* SUNSET */
+.btn-custom.sunset{
+  background-color: #db2b39;
+  border-color: #db2b39;
+  color: #f2efea;
+}
+.btn-custom.sunset:hover,
+.btn-custom.sunset:focus,
+.btn-custom.sunset:active,
+.btn-custom.sunset.active {
+  background-color: #ca2230;
+  border-color: #b41f2b;
+  color: #f2efea;
+}
+.btn-custom.sunset.disabled:hover,
+.btn-custom.sunset.disabled:focus,
+.btn-custom.sunset.disabled:active,
+.btn-custom.sunset.disabled.active,
+.btn-custom.sunset[disabled]:hover,
+.btn-custom.sunset[disabled]:focus,
+.btn-custom.sunset[disabled]:active,
+.btn-custom.sunset[disabled].active,
+fieldset[disabled] .btn-custom.sunset:hover,
+fieldset[disabled] .btn-custom.sunset:focus,
+fieldset[disabled] .btn-custom.sunset:active,
+fieldset[disabled] .btn-custom.sunset.active {
+  background-color: #db2b39;
+  border-color: #db2b39;
+  color: #f2efea;
+}
+
+
+/* ANTISUNSET */
+.btn-custom.antisunset{
+  background-color: #f2efea;
+  border-color: #db2b39;
+  color: #db2b39;
+}
+.btn-custom.antisunset:hover,
+.btn-custom.antisunset:focus,
+.btn-custom.antisunset:active,
+.btn-custom.antisunset.active {
+  background-color: #db2b39;
+  border-color: #db2b39;
+  color: #f2efea;
+  opacity: 0.6;
+}
+.btn-custom.antisunset.disabled:hover,
+.btn-custom.antisunset.disabled:focus,
+.btn-custom.antisunset.disabled:active,
+.btn-custom.antisunset.disabled.active,
+.btn-custom.antisunset[disabled]:hover,
+.btn-custom.antisunset[disabled]:focus,
+.btn-custom.antisunset[disabled]:active,
+.btn-custom.antisunset[disabled].active,
+fieldset[disabled] .btn-custom.antisunset:hover,
+fieldset[disabled] .btn-custom.antisunset:focus,
+fieldset[disabled] .btn-custom.antisunset:active,
+fieldset[disabled] .btn-custom.antisunset.active{
+  background-color: #db2b39;
+  border-color: #db2b39;
+  color: #f2efea;
+  opacity: 0.6;
+}
+
+
+/* KOAMARU */
+.btn-custom.koamaru{
+  background-color: #29335c;
+  border-color: #29335c;
+  color: #db2b39;
+}
+.btn-custom.koamaru:hover,
+.btn-custom.koamaru:focus,
+.btn-custom.koamaru:active,
+.btn-custom.koamaru.active {
+  background-color: #21294a;
+  border-color: #191f39;
+  color: #db2b39;
+}
+.btn-custom.koamaru.disabled:hover,
+.btn-custom.koamaru.disabled:focus,
+.btn-custom.koamaru.disabled:active,
+.btn-custom.koamaru.disabled.active,
+.btn-custom.koamaru[disabled]:hover,
+.btn-custom.koamaru[disabled]:focus,
+.btn-custom.koamaru[disabled]:active,
+.btn-custom.koamaru[disabled].active,
+fieldset[disabled] .btn-custom.koamaru:hover,
+fieldset[disabled] .btn-custom.koamaru:focus,
+fieldset[disabled] .btn-custom.koamaru:active,
+fieldset[disabled] .btn-custom.koamaru.active {
+  background-color: #29335c;
+  border-color: #29335c;
+  color: #db2b39;
+}
+
+

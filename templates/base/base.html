@@ -1,0 +1,50 @@
+<!doctype html>
+{% load static from staticfiles %}
+
+<!-- This is a Bootstrap4 starter template -->
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap3 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  
+    <!-- bootstrap-select CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "dist/css/bootstrap-select.css" %}">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static "base/css/custom.css" %}">
+  
+    <title> Census demo </title>
+  </head>
+
+
+  <body class='body-custom'>
+    <header>
+      {% include 'base/_nav.html' %}
+    </header>
+    <main>
+      {% block main_block %}
+        
+        <!-- MAIN_BLOCK -->
+
+      {% endblock %}
+    </main>
+    <footer></footer>
+
+
+    <!-- Optional JavaScript -->
+
+    <!-- 1. jQuery, 2. Popper.js, 3. Bootstrap3 JS, 4. bootstrap-select, 5. Custom JS  -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   
+    <script src="{% static "dist/js/bootstrap-select.min.js" %}"></script>
+    <script src="{% static "base/js/custom.js" %}"></script> 
+  </body>
+</html>
