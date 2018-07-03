@@ -48,7 +48,7 @@ else:
     
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
    
-    ALLOWED_HOSTS = ['https://kpopdemo.herokuapp.com']
+    ALLOWED_HOSTS = ['*']
 
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)  
@@ -56,7 +56,7 @@ else:
 
     SECURE_CONTENT_TYPE_NOSNIFF = True
 
-    SECURE_BROWSER_XSS_FILTER = True 
+    SECURE_BROWSER_XSS_FILTER = False 
 
     SECURE_SSL_REDIRECT = False
 
@@ -65,6 +65,8 @@ else:
     CSRF_COOKIE_SECURE = True 
 
     X_FRAME_OPTIONS='DENY' 
+
+    DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
 # Application definition
@@ -173,4 +175,3 @@ STATIC_ROOT = STATIC_DIR
 
 # Installed apps 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
