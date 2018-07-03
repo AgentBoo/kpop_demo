@@ -48,7 +48,7 @@ else:
     
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
    
-    ALLOWED_HOSTS = ['*','https://kpopdemo.herokuapp.com']
+    ALLOWED_HOSTS = ['https://kpopdemo.herokuapp.com']
 
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)  
