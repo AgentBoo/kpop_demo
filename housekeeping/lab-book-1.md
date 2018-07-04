@@ -31,7 +31,7 @@ Comment out or delete preconfigured DATABASES and define your own
 
 4. DEBUG 
 Keep DEBUG False by default
-Load variables from .env using dotenv
+export DJANGO_DEBUG=True for development 
 
 ```python
 DEBUG = bool(os.getenv('DJANGO_DEBUG', False))
