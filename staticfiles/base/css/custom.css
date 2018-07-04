@@ -4,9 +4,6 @@
 
 
 /*** MISC  ***/
-.border{
-  border: solid 1px red;
-}
 .row-custom-focal{
   display: flex;
     align-items: center;
@@ -29,16 +26,6 @@
   line-height: 4.158;
   margin-top: 1.428em;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

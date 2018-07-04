@@ -25,14 +25,15 @@ def get_reddit_instance():
 					   client_secret=os.getenv('PRAW_SECRET'), 
 					   user_agent=os.getenv('PRAW_USER_AGENT'),)
 
-
-reddit = praw.Reddit(client_id=os.getenv('PRAW_CLIENT'), 
-					 client_secret=os.getenv('PRAW_SECRET'), 
-					 user_agent=os.getenv('PRAW_USER_AGENT'), 
-					 redirect_uri=os.getenv('OAUTH_CALLBACK'))
+def get_authorized_reddit_instance():
+	return praw.Reddit(client_id=os.getenv('PRAW_CLIENT'), 
+					   client_secret=os.getenv('PRAW_SECRET'), 
+					   user_agent=os.getenv('PRAW_USER_AGENT'), 
+					   redirect_uri=os.getenv('OAUTH_CALLBACK'))
 
 
 def redirect_to_survey(request):
+	reddit = get_authorized_reddit_instance()
 	survey_state = uuid.uuid4().hex
 	access_url = reddit.auth.url(['identity'], survey_state, 'temporary')
 	request.session['survey_state'] = survey_state
