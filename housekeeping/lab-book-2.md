@@ -32,6 +32,12 @@ https://docs.djangoproject.com/en/2.0/ref/contrib/messages/
 4. setting cookie expiry time 
 https://docs.djangoproject.com/en/2.0/topics/http/sessions/
 
+5. whitenoise compression 
+https://github.com/django/djangopeople/issues/46
+
+6. Server error 500 on deployment with heroku 
+https://stackoverflow.com/questions/15128135/setting-debug-false-causes-500-error/19268741#19268741
+
 
 #### Converting timestamps to datetime 
 https://docs.python.org/3/library/datetime.html#datetime.date.fromtimestamp

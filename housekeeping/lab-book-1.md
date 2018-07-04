@@ -37,9 +37,6 @@ export DJANGO_DEBUG=True for development
 DEBUG = bool(os.getenv('DJANGO_DEBUG', False))
 ```
 
-
-
-
 <br>
 
 #### Models 

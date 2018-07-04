@@ -37,7 +37,7 @@ def redirect_to_survey(request):
 	survey_state = uuid.uuid4().hex
 	access_url = auth_reddit.auth.url(['identity'], survey_state, 'temporary')
 	request.session['survey_state'] = survey_state
-	request.session.set_expiry(60*60*24)
+	request.session.set_test_cookie()
 
 	return redirect(access_url)
 
@@ -46,15 +46,16 @@ def pre_survey(request):
 	return render(request, 'survey/pre_survey.html')
 
 
-def auth_survey(request):	
+def auth_survey(request):
+	print(request.session.test_cookie_worked())
 	try:
 		state, error, code = [ request.GET.get(param, None) for param in ('state','error','code') if request.GET ]
-
+		print(request.GET)
 		if state == request.session['survey_state']:
 			if error and error == 'access_denied':
+				
 				info = 'Please allow our app to access your username and cake day to continue with the survey' 
 				messages.info(request, info)
-				request.session.flush()
 				return redirect('survey:pre_survey')
 		
 			elif code:
@@ -73,19 +74,19 @@ def auth_survey(request):
 					request.session['redditor'] = redditor
 					return redirect('survey:survey_form')
 			else:
-				request.session.flush()
+				
 				err = 'Something went wrong. Please try again or contact our mods at r/kpop' 
 				messages.error(request, err)
 				return redirect('survey:pre_survey')
 
 		else:
-			request.session.flush()
+			
 			err = 'Something went wrong. Please try again or contact our mods at r/kpop' 
 			messages.error(request, err)
 			return redirect('survey:pre_survey')
 
 	except (ValueError, KeyError, OAuthException):
-		request.session.flush()
+		
 		info = 'Please allow our app to access your username and cake day to continue with the survey' 
 		messages.info(request, info)
 		return redirect('survey:pre_survey')
