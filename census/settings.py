@@ -63,7 +63,7 @@ else:
 
     SECURE_CONTENT_TYPE_NOSNIFF = True 
 
-    SECURE_SSL_REDIRECT = True 
+    SECURE_SSL_REDIRECT = False 
 
     CSRF_COOKIE_SECURE = True 
 
