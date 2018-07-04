@@ -58,7 +58,7 @@ def auth_survey(request):
 				return redirect('survey:pre_survey')
 		
 			elif code:
-				reddit = get_reddit_instance()
+				reddit = get_authorized_reddit_instance()
 				reddit.auth.authorize(code)
 				redditor = str(reddit.user.me())
 
