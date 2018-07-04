@@ -29,6 +29,9 @@ print(request.GET)
 3. messages
 https://docs.djangoproject.com/en/2.0/ref/contrib/messages/
 
+4. setting cookie expiry time 
+https://docs.djangoproject.com/en/2.0/topics/http/sessions/
+
 
 #### Converting timestamps to datetime 
 https://docs.python.org/3/library/datetime.html#datetime.date.fromtimestamp
@@ -160,6 +163,9 @@ http://twitterbootstrap3buttons.w3masters.nl/?color=%23db2b39
 
 8. Styling forms 
 https://simpleisbetterthancomplex.com/article/2017/08/19/how-to-render-django-form-manually.html
+
+9. bootstrap-select 
+https://silviomoreto.github.io/bootstrap-select/
 
 
 

@@ -54,7 +54,8 @@ else:
         'default': dj_database_url.config(conn_max_age=600)  
     }
 
-
+    SECURE_PROXY_SSL_HEADER = (“HTTP_X_FORWARDED_PROTO”, “https”)
+    
     DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
@@ -159,7 +160,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = STATIC_DIR
 
 # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = null 
+STATICFILES_DIRS = []
 
 
 # Installed apps 

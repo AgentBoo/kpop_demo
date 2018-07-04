@@ -11,6 +11,37 @@ GRANT ALL PRIVILEGES ON DATABASE poems TO poems;
 \q
 ```
 
+<br>
+
+#### Settings 
+1. There are no extra statifiles directories outside of staticfiles  
+```python
+STATIC_URL = '/static/' 
+STATIC_ROOT = STATIC_DIR = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = []
+```
+
+2. Whitenoise
+Use whitenoise in both dev and prod, but do NOT EVER USE THE WHITENOISE STORAGE 
+https://stackoverflow.com/questions/26829435/collectstatic-command-fails-when-whitenoise-is-enabled/32347324#32347324
+https://docs.djangoproject.com/en/1.11/ref/contrib/staticfiles/#django.contrib.staticfiles.storage.ManifestStaticFilesStorage.manifest_strict
+
+3. Databases 
+Comment out or delete preconfigured DATABASES and define your own  
+
+4. DEBUG 
+Keep DEBUG False by default
+Load variables from .env using dotenv
+
+```python
+DEBUG = bool(os.getenv('DJANGO_DEBUG', False))
+```
+
+
+
+
+<br>
+
 #### Models 
 Survey 
 age 
@@ -44,6 +75,10 @@ survey:post_survey.html
 
 <br>
 
+
+
+
+<br>
 
 #### Color palette 
 + #51c1ba serpent

@@ -1,11 +1,12 @@
-import datetime
-import uuid
+from django.conf.settings import DEBUG
 from django.shortcuts import render, render_to_response, redirect
 from django.contrib import messages 
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.template import RequestContext
 from prawcore.exceptions import OAuthException
+import datetime
+import uuid
 from .models import Survey, Respondent
 from .forms import SurveyForm 
 
@@ -13,24 +14,29 @@ from .forms import SurveyForm
 
 import os
 import praw
-from dotenv import load_dotenv, find_dotenv
 
-load_dotenv(find_dotenv())
+if DEBUG:
+	from dotenv import load_dotenv, find_dotenv
+	load_dotenv(find_dotenv())
+
 
 def get_reddit_instance():
 	return praw.Reddit(client_id=os.getenv('PRAW_CLIENT'), 
 					   client_secret=os.getenv('PRAW_SECRET'), 
 					   user_agent=os.getenv('PRAW_USER_AGENT'),)
 
+
 reddit = praw.Reddit(client_id=os.getenv('PRAW_CLIENT'), 
 					 client_secret=os.getenv('PRAW_SECRET'), 
 					 user_agent=os.getenv('PRAW_USER_AGENT'), 
 					 redirect_uri=os.getenv('OAUTH_CALLBACK'))
 
+
 def redirect_to_survey(request):
 	survey_state = uuid.uuid4().hex
 	access_url = reddit.auth.url(['identity'], survey_state, 'temporary')
 	request.session['survey_state'] = survey_state
+	request.session.set_expiry(60*60*24)
 
 	return redirect(access_url)
 
@@ -41,7 +47,7 @@ def pre_survey(request):
 
 def auth_survey(request):	
 	try:
-		state, error, code = [ request.GET.get(param,None) for param in ('state','error','code') if request.GET ]
+		state, error, code = [ request.GET.get(param, None) for param in ('state','error','code') if request.GET ]
 
 		if state == request.session['survey_state']:
 			if error and error == 'access_denied':
@@ -78,8 +84,8 @@ def auth_survey(request):
 
 	except (ValueError, KeyError, OAuthException):
 		request.session.flush()
-		err = 'Please allow our app to access your username and cake day to continue with the survey' 
-		messages.error(request, err)
+		info = 'Please allow our app to access your username and cake day to continue with the survey' 
+		messages.info(request, info)
 		return redirect('survey:pre_survey')
  
 
@@ -117,6 +123,7 @@ def survey_form(request):
 				except Survey.DoesNotExist:
 					form = SurveyForm()
 					return render(request, 'survey/survey_form.html', {'form': form })
+
 	except KeyError:
 		return redirect('survey:survey_redirect')
 
