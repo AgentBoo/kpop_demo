@@ -1,4 +1,4 @@
-from django.conf.settings import DEBUG
+from django.conf import settings
 from django.shortcuts import render, render_to_response, redirect
 from django.contrib import messages 
 from django.http import HttpResponseRedirect
@@ -15,7 +15,7 @@ from .forms import SurveyForm
 import os
 import praw
 
-if DEBUG:
+if settings.DEBUG:
 	from dotenv import load_dotenv, find_dotenv
 	load_dotenv(find_dotenv())
 

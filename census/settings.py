@@ -37,26 +37,41 @@ if DEBUG:
         CORS_ORIGIN_WHITELIST = LOCAL_WHITELIST
         CSRF_TRUSTED_ORIGINS = LOCAL_TRUSTED_ORIGINS
         DATABASES = LOCAL_DATABASE
+        DEBUG_PROPAGATE_EXCEPTIONS = True
 
     except ImportError:
         raise Exception('A local_settings.py file is required to run this project') 
 
 else:
     import dj_database_url
+    from dotenv import load_dotenv, find_dotenv
+    load_dotenv(find_dotenv())
 
     # SECURITY WARNING: keep the secret key used in production secret!
     
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
    
-    ALLOWED_HOSTS = ['*']
+    ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS')]
 
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)  
     }
 
-    SECURE_PROXY_SSL_HEADER = (“HTTP_X_FORWARDED_PROTO”, “https”)
-    
-    DEBUG_PROPAGATE_EXCEPTIONS = True
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+    SECURE_BROWSER_XSS_FILTER = True 
+
+    SECURE_CONTENT_TYPE_NOSNIFF = True 
+
+    SECURE_SSL_REDIRECT = True 
+
+    CSRF_COOKIE_SECURE = True 
+
+    SESSION_COOKIE_SECURE = True
+
+    X_FRAME_OPTIONS = 'DENY'
+
+    DEBUG_PROPAGATE_EXCEPTIONS = False
 
 
 # Application definition

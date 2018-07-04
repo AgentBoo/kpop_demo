@@ -1,6 +1,6 @@
 from django import forms 
 from .models import Survey 
-from choices import countries 
+from census.choices import countries 
 
 COUNTRY_CHOICES = [ (country,country) for country in countries ]  
 ARTIST_CHOICES = [('Lee Taemin', 'Lee Taemin'), ('Kim Taeyeon','Kim Taeyeon'), ('Kim Tae-hyung', 'Kim Tae-hyung (V)')]

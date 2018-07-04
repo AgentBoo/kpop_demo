@@ -1,5 +1,5 @@
 from django.db import models
-from countries import countries 
+from census.choices import countries 
 
 # Create your models here.
 
