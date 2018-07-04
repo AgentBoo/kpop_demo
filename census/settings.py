@@ -51,7 +51,7 @@ else:
     
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
    
-    ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS') ]
+    ALLOWED_HOSTS = ['*']
 
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)  
