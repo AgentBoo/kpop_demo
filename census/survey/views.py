@@ -33,9 +33,9 @@ def get_authorized_reddit_instance():
 
 
 def redirect_to_survey(request):
-	reddit = get_authorized_reddit_instance()
+	auth_reddit = get_authorized_reddit_instance()
 	survey_state = uuid.uuid4().hex
-	access_url = reddit.auth.url(['identity'], survey_state, 'temporary')
+	access_url = auth_reddit.auth.url(['identity'], survey_state, 'temporary')
 	request.session['survey_state'] = survey_state
 	request.session.set_expiry(60*60*24)
 
@@ -58,6 +58,7 @@ def auth_survey(request):
 				return redirect('survey:pre_survey')
 		
 			elif code:
+				reddit = get_reddit_instance()
 				reddit.auth.authorize(code)
 				redditor = str(reddit.user.me())
 
