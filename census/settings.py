@@ -51,7 +51,7 @@ else:
     
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
    
-    ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS')]
+    ALLOWED_HOSTS = [ os.getenv('ALLOWED_HOSTS') ]
 
     DATABASES = {
         'default': dj_database_url.config(conn_max_age=600)  
@@ -71,7 +71,7 @@ else:
 
     X_FRAME_OPTIONS = 'DENY'
 
-    DEBUG_PROPAGATE_EXCEPTIONS = False
+    DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
 # Application definition
