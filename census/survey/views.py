@@ -46,49 +46,50 @@ def pre_survey(request):
 
 
 def auth_survey(request):
-	try:
-		state, error, code = [ request.GET.get(param, None) for param in ('state','error','code') if request.GET ]
+	if request.method == 'GET':
+		try:
+			state, error, code = [ request.GET.get(param, None) for param in ('state','error','code') if request.GET ]
 
-		if state == request.session['survey_state']:
-			if error and error == 'access_denied':
-				request.session.flush()
-				info = 'Please allow our app to access your username and cake day to continue with the survey' 
-				messages.info(request, info)
-				return redirect('survey:pre_survey')
-		
-			elif code:
-				reddit = get_authorized_reddit_instance()
-				reddit.auth.authorize(code)
-				redditor = str(reddit.user.me())
+			if state == request.session['survey_state']:
+				if error and error == 'access_denied':
+					del request.session['survey_state']
+					info = 'Please allow our app to access your username and cake day to continue with the survey' 
+					messages.info(request, info)
+					return redirect('survey:pre_survey')
+			
+				elif code:
+					reddit = get_authorized_reddit_instance()
+					reddit.auth.authorize(code)
+					redditor = str(reddit.user.me())
 
-				try:
-					respondent = Respondent.objects.get(username=redditor)
-					request.session['redditor'] = redditor
-					info = 'You can only take this survey once'
-					messages.info(request,info)
+					try:
+						respondent = Respondent.objects.get(username=redditor)
+						request.session['redditor'] = redditor
+						info = 'You can only take this survey once'
+						messages.info(request,info)
+						return redirect('survey:pre_survey')
+
+					except Respondent.DoesNotExist:
+						request.session['redditor'] = redditor
+						request.session.set_expiry(60*60*24)
+						return redirect('survey:survey_form')
+				else:
+					del request.session['survey_state']
+					err = 'Something went wrong. Please try again or contact our mods at r/kpop' 
+					messages.error(request, err)
 					return redirect('survey:pre_survey')
 
-				except Respondent.DoesNotExist:
-					request.session['redditor'] = redditor
-					request.session.set_expiry(60*60*24)
-					return redirect('survey:survey_form')
 			else:
-				request.session.flush()
+				del request.session['survey_state']
 				err = 'Something went wrong. Please try again or contact our mods at r/kpop' 
 				messages.error(request, err)
 				return redirect('survey:pre_survey')
 
-		else:
+		except (ValueError, KeyError, OAuthException):
 			request.session.flush()
-			err = 'Something went wrong. Please try again or contact our mods at r/kpop' 
-			messages.error(request, err)
+			info = 'Something went wrong. Please try using the link to the survey again or contant our mods at r/kpop' 
+			messages.info(request, info)
 			return redirect('survey:pre_survey')
-
-	except (ValueError, KeyError, OAuthException):
-		request.session.flush()
-		info = 'Please allow our app to access your username and cake day to continue with the survey' 
-		messages.info(request, info)
-		return redirect('survey:pre_survey')
  
 
 def survey_form(request):
@@ -137,6 +138,7 @@ def post_survey(request):
 			return render(request, 'survey/post_survey.html', context)	
 	
 	except KeyError:
+		request.session.flush()
 		return render(request, 'survey/post_survey.html')
 
 
