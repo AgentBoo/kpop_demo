@@ -2,8 +2,8 @@ from django.db import models
 from census.choices import countries 
 
 # Create your models here.
-
-COUNTRY_CHOICES = [ (country,country) for country in countries ] 
+AGE_CHOICES = [ (age_group, age_group) for age_group in ['0-12', '13-17', '18-24', '25-34', '35-44', '45-54', '55-64', '65-200'] ]
+COUNTRY_CHOICES = [ (country, country) for country in countries ] 
 ARTIST_CHOICES = [('Lee Taemin', 'Lee Taemin'), ('Kim Taeyeon','Kim Taeyeon'), ('Kim Tae-hyung', 'Kim Tae-hyung (V)')]
 
 
@@ -16,7 +16,7 @@ class Respondent(models.Model):
 
 
 class Survey(models.Model):
-	age = models.IntegerField(null=True)
+	age = models.CharField(max_length=20, default='', choices=AGE_CHOICES)
 	country = models.CharField(max_length=256, default='', choices=COUNTRY_CHOICES)
 	artist = models.CharField(max_length=256, default='', choices=ARTIST_CHOICES) 
 
