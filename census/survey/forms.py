@@ -2,7 +2,7 @@ from django import forms
 from .models import Survey 
 from census.choices import countries 
 
-AGE_CHOICES = [ (age_group, age_group) for age_group in ['0-12', '13-17', '18-24', '25-34', '35-44', '45-54', '55-64', '65-200'] ]
+AGE_CHOICES = [('0-12','younger than 13'), ('13-17','13-17'), ('18-24','18-24'), ('25-34', '25-34'), ('35-44','35-44'), ('45-54','45-54'), ('55-64','55-64'), ('65-200','65+')]
 COUNTRY_CHOICES = [ (country,country) for country in countries ]  
 ARTIST_CHOICES = [('Lee Taemin', 'Lee Taemin'), ('Kim Taeyeon','Kim Taeyeon'), ('Kim Tae-hyung', 'Kim Tae-hyung (V)')]
 
