@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from django.template import RequestContext
 from prawcore.exceptions import OAuthException
+from rest_framework.views import APIView 
+from rest_framework.response import Response
 import datetime
 import uuid
 from .models import Survey, Respondent
@@ -141,6 +143,40 @@ def post_survey(request):
 		request.session.flush()
 		return render(request, 'survey/post_survey.html')
 
-
 def results(request):
 	return render(request, 'survey/results.html')
+
+class ChartData(APIView):
+	authentication_classes = []
+	permission_classes = []
+
+	def get(self, request, format=None):
+		context = {
+			'default': [
+					Survey.objects.filter(age='0-12').count(), 
+					Survey.objects.filter(age='13-17').count(),
+					Survey.objects.filter(age='18-24').count(),
+					Survey.objects.filter(age='25-34').count(),
+					Survey.objects.filter(age='35-44').count(),
+					Survey.objects.filter(age='45-54').count(),
+					Survey.objects.filter(age='55-64').count(),
+					Survey.objects.filter(age='65-200').count(),
+
+					]
+				,
+			'labels': [
+					'<13', 
+					'13-17',
+					'18-24',
+					'25-34',
+					'35-44',
+					'45-54',
+					'55-64',
+					'65+'
+				]
+			,
+			'respondents': Respondent.objects.all().count()
+
+		}
+		print(context)
+		return Response(context)

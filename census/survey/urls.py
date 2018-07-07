@@ -11,4 +11,5 @@ urlpatterns = [
 	path('form', views.survey_form, name='survey_form'),
 	path('thanks', views.post_survey, name='post_survey'),
 	path('results', views.results, name='results'),
+	path('api/chart/data', views.ChartData.as_view())
 ]

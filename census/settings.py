@@ -71,7 +71,7 @@ else:
 
     X_FRAME_OPTIONS = 'DENY'
 
-    DEBUG_PROPAGATE_EXCEPTIONS = False
+    DEBUG_PROPAGATE_EXCEPTIONS = True
 
 
 # Application definition
@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django_extensions',
+    'rest_framework',
     'widget_tweaks',
     'census.landing',
     'census.survey'
