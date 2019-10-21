@@ -6,7 +6,7 @@ Django==2.0.5
 django-cors-headers==2.3.0
 django-extensions==2.0.7
 django-widget-tweaks==1.4.2
-djangorestframework==3.8.2
+djangorestframework==3.9.1
 gunicorn==19.8.1
 idna==2.7
 praw==5.4.0
