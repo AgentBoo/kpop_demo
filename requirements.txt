@@ -17,5 +17,5 @@ pytz==2018.4
 requests==2.19.1
 six==1.11.0
 update-checker==0.16
-urllib3==1.23
+urllib3==1.26.5
 whitenoise==3.3.1
